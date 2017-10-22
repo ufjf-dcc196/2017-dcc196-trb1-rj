@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10sp"
+    tools:context="br.com.oak.ifeira.CadReserva">
+
+    <Spinner
+        android:id="@+id/spLivro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tooltipText="Livro" />
+
+    <Spinner
+        android:id="@+id/spPessoa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+        android:layout_marginTop="5sp"
+        android:tooltipText="Pessoa" />
+
+    <Button
+        android:id="@+id/btnReservar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reservar" />
+</LinearLayout>

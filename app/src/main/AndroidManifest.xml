@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CadPessoa" />
+        <activity android:name=".CadReserva" />
+        <activity android:name=".CadLivro"></activity>
     </application>
 
 </manifest>
