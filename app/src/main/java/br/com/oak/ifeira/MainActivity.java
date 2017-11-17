@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,5 +53,13 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+
+        ListView listaDePessoas = (ListView) findViewById(R.id.lstPessoas);
+
+        ArrayAdapter<Pessoa> adapter = new ArrayAdapter<Pessoa>(this,
+                android.R.layout.simple_list_item_1, pessoas);
+
+        listaDePessoas.setAdapter(adapter);
+
     }
 }
