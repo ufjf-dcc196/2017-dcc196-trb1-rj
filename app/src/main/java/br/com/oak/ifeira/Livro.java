@@ -44,4 +44,9 @@ public class Livro {
         this.ano = ano;
     }
 
+    @Override
+    public String toString() {
+        return titulo;
+    }
+
 }
