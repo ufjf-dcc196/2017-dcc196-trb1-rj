@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
         btnCadReserva.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this ,CadReserva.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(getApplicationContext() ,CadReserva.class);
+                startActivity(intent);
             }
         });
 
@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         btnCadLivro.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this ,CadLivro.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(getApplicationContext() ,CadLivro.class);
+                startActivity(intent);
             }
         });
 
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         btnCadPessoa.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this ,CadPessoa.class);
-                MainActivity.this.startActivity(intent);
+                Intent intent = new Intent(getApplicationContext() ,CadPessoa.class);
+                startActivity(intent);
             }
         });
 
