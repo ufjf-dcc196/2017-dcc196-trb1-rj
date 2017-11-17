@@ -34,9 +34,9 @@ public class CadLivro extends AppCompatActivity {
             public void onClick(View view) {
                 Livro livro = new Livro();
 
-                txtTitulo.setText(txtTitulo.getText().toString());
-                txtEditora.setText(txtEditora.getText().toString());
-                txtAno.setText(txtAno.getText().toString());
+                livro.setTitulo(txtTitulo.getText().toString());
+                livro.setEditora(txtEditora.getText().toString());
+                livro.setAno(txtAno.getText().toString());
 
                 MainActivity.livros.add(livro);
 
