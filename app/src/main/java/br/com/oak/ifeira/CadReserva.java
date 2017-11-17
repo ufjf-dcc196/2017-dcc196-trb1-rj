@@ -4,12 +4,14 @@ package br.com.oak.ifeira;
  * Created by Teco on 31/10/2017.
  */
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CadReserva extends AppCompatActivity {
 
@@ -29,7 +31,17 @@ public class CadReserva extends AppCompatActivity {
         btnReservar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                //logica
+                Livro livro = (Livro) spLivro.getSelectedItem();
+                Pessoa pessoa = (Pessoa) spPessoa.getSelectedItem();
+
+                Reserva reserva = new Reserva(pessoa,livro);
+
+                MainActivity.reservas.add(reserva);
+
+                Intent intent = new Intent(CadReserva.this ,MainActivity.class);
+                CadReserva.this.startActivity(intent);
+
+                Toast.makeText(CadReserva.this, "A reserva foi cadastrada com sucesso.", Toast.LENGTH_SHORT).show();
             }
         });
     }
