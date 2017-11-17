@@ -54,12 +54,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        atualizarLista();
+
+    }
+
+    private void atualizarLista()
+    {
         ListView listaDePessoas = (ListView) findViewById(R.id.lstPessoas);
 
         ArrayAdapter<Pessoa> adapter = new ArrayAdapter<Pessoa>(this,
                 android.R.layout.simple_list_item_1, pessoas);
 
         listaDePessoas.setAdapter(adapter);
+    }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+
+        atualizarLista();
     }
 }
