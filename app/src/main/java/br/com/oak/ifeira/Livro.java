@@ -8,13 +8,13 @@ public class Livro {
 
     private String titulo;
     private String editora;
-    private String ano;
+    private Integer ano;
 
     public Livro() {
         this(null,null,null);
     }
 
-    public Livro(String titulo, String editora, String ano) {
+    public Livro(String titulo, String editora, Integer ano) {
         this.titulo = titulo;
         this.editora = editora;
         this.ano = ano;
@@ -28,7 +28,7 @@ public class Livro {
         return editora;
     }
 
-    public String getAno() {
+    public Integer getAno() {
         return ano;
     }
 
@@ -40,7 +40,7 @@ public class Livro {
         this.editora = editora;
     }
 
-    public void setAno(String ano) {
+    public void setAno(Integer ano) {
         this.ano = ano;
     }
 
