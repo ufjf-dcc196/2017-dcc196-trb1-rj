@@ -29,21 +29,20 @@ public class PessoaHelper {
         }
     }
 
-    public void criarLivro(Livro l){
+    public void criarPessoa(Pessoa p){
         try{
             db.execSQL("INSERT INTO pessoa (nome, email) VALUES ('" +
                     p.getNome()+"', '" +
-                    l.getEmail()+"', " +
-                    l.getAno()+", " +")");
+                    p.getEmail()+"', " +")");
 
         }catch(Exception e){
-            Log.e("Livro", "Erro ao inserir um livro");
-            Log.e("Livro", e.getLocalizedMessage());
+            Log.e("Pessoa", "Erro ao inserir um livro");
+            Log.e("Pessoa", e.getLocalizedMessage());
         };
     }
 
     public List<Pessoa> listarTodos() {
-        Cursor resultado = db.rawQuery("SELECT titulo, autor, editora, ano, preco FROM livro", null);
+        Cursor resultado = db.rawQuery("SELECT nome, email FROM pessoa", null);
         List<Pessoa> pessoas = new ArrayList<>();
         resultado.moveToPosition(-1);
         while (resultado.moveToNext()){
@@ -52,7 +51,7 @@ public class PessoaHelper {
             p.setEmail(resultado.getString(1));
             pessoas.add(p);
         }
-        return livros;
+        return pessoas;
     }
 
 }

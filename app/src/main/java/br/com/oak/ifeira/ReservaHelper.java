@@ -15,43 +15,41 @@ public class ReservaHelper {
 
     private SQLiteDatabase db;
 
-    public LivroHelper(SQLiteDatabase db) {
+    public ReservaHelper(SQLiteDatabase db) {
         this.db = db;
         criaTabela();
     }
 
     private void criaTabela() {
         try {
-            db.execSQL("CREATE TABLE IF NOT EXISTS livro (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo VARCHAR, editora VARCHAR, ano INTEGER)");
+            db.execSQL("CREATE TABLE IF NOT EXISTS reserva (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo VARCHAR, nome VARCHAR)");
         }catch (Exception e){
-            Log.e("Livro", "Erro ao criar a tabela!");
-            Log.e("Livro", e.getMessage());
+            Log.e("Reserva", "Erro ao criar a tabela!");
+            Log.e("Reserva", e.getMessage());
         }
     }
 
-    public void criarLivro(Livro l){
+    public void criarReserva(Reserva r){
         try{
-            db.execSQL("INSERT INTO livro (titulo, editora, ano) VALUES ('" +
-                    l.getTitulo()+"', '" +
-                    l.getEditora()+"', " +
-                    l.getAno()+", " +")");
+            db.execSQL("INSERT INTO reserva (titulo, nome) VALUES ('" +
+                    r.getLivro().getTitulo()+"', '" +
+                    r.getPessoa().getNome()+"', " +")");
 
         }catch(Exception e){
-            Log.e("Livro", "Erro ao inserir um livro");
-            Log.e("Livro", e.getLocalizedMessage());
+            Log.e("Reserva", "Erro ao inserir um livro");
+            Log.e("Reserva", e.getLocalizedMessage());
         };
     }
 
-    public List<Livro> listarTodos() {
-        Cursor resultado = db.rawQuery("SELECT titulo, autor, editora, ano, preco FROM livro", null);
-        List<Livro> livros = new ArrayList<>();
+    public List<Reserva> listarTodos() {
+        Cursor resultado = db.rawQuery("SELECT titulo, nome FROM reserva", null);
+        List<Reserva> reservas = new ArrayList<>();
         resultado.moveToPosition(-1);
         while (resultado.moveToNext()){
-            Livro l = new Livro();
-            l.setTitulo(resultado.getString(0));
-            l.setEditora(resultado.getString(1));
-            l.setAno(resultado.getInt(2));
-            livros.add(l);
+            Reserva r = new Reserva();
+            r.setLivro(resultado.getString(0));
+            r.setPessoa(resultado.getString(1));
+            reservas.add(r);
         }
         return livros;
     }
