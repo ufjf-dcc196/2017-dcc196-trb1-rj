@@ -1,5 +1,6 @@
 package br.com.oak.ifeira;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -11,12 +12,13 @@ import java.util.List;
  * Created by Teco on 30/11/2017.
  */
 
-public class PessoaHelper {
+public class PessoaHelper extends SQLiteHelper{
 
     private SQLiteDatabase db;
 
-    public PessoaHelper(SQLiteDatabase db) {
-        this.db = db;
+    public PessoaHelper(Context ctx) {
+        super(ctx);
+        this.db = super.getDb();
         criaTabela();
     }
 
@@ -33,17 +35,17 @@ public class PessoaHelper {
         try{
             db.execSQL("INSERT INTO pessoa (nome, email) VALUES ('" +
                     p.getNome()+"', '" +
-                    p.getEmail()+"', " +")");
+                    p.getEmail()+"')");
 
         }catch(Exception e){
-            Log.e("Pessoa", "Erro ao inserir um livro");
+            Log.e("Pessoa", "Erro ao inserir uma pessoa");
             Log.e("Pessoa", e.getLocalizedMessage());
         };
     }
 
-    public List<Pessoa> listarTodos() {
+    public ArrayList<Pessoa> listarTodos() {
         Cursor resultado = db.rawQuery("SELECT nome, email FROM pessoa", null);
-        List<Pessoa> pessoas = new ArrayList<>();
+        ArrayList<Pessoa> pessoas = new ArrayList<>();
         resultado.moveToPosition(-1);
         while (resultado.moveToNext()){
             Pessoa p = new Pessoa();

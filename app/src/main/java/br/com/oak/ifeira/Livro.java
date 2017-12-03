@@ -1,20 +1,17 @@
 package br.com.oak.ifeira;
 
-/**
- * Created by Teco on 31/10/2017.
- */
-
 public class Livro {
 
+    private int id;
     private String titulo;
     private String editora;
     private Integer ano;
 
     public Livro() {
-        this(null,null,null);
+        this(0,null,null,null);
     }
 
-    public Livro(String titulo, String editora, Integer ano) {
+    public Livro(int id, String titulo, String editora, Integer ano) {
         this.titulo = titulo;
         this.editora = editora;
         this.ano = ano;
@@ -42,6 +39,14 @@ public class Livro {
 
     public void setAno(Integer ano) {
         this.ano = ano;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

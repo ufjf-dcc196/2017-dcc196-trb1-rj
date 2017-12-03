@@ -1,21 +1,20 @@
 package br.com.oak.ifeira;
 
-/**
- * Created by Teco on 31/10/2017.
- */
-
 public class Pessoa {
+
+    private int id;
 
     private String nome;
     private String email;
 
     public Pessoa() {
-        this(null,null);
+        this(0,null,null);
     }
 
-    public Pessoa(String nome, String email) {
+    public Pessoa(int id, String nome, String email) {
         this.nome = nome;
         this.email = email;
+        this.id = id;
     }
 
     public String getNome() {
@@ -32,6 +31,14 @@ public class Pessoa {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

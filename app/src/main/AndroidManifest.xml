@@ -19,6 +19,7 @@
         <activity android:name=".CadPessoa" />
         <activity android:name=".CadReserva" />
         <activity android:name=".CadLivro"></activity>
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     </application>
 
 </manifest>

@@ -27,15 +27,17 @@ public class CadReserva extends AppCompatActivity {
 
         spLivro = (Spinner) findViewById(R.id.spLivro);
 
+        LivroHelper dbLivro = new LivroHelper(CadReserva.this);
         ArrayAdapter<Livro> adapterLivro = new ArrayAdapter<Livro>(this,
-                android.R.layout.simple_list_item_1, MainActivity.livros);
+                android.R.layout.simple_list_item_1, dbLivro.listarTodos());
 
         spLivro.setAdapter(adapterLivro);
 
         spPessoa = (Spinner) findViewById(R.id.spPessoa);
 
+        PessoaHelper dbPessoa = new PessoaHelper(CadReserva.this);
         ArrayAdapter<Pessoa> adapterPessoa = new ArrayAdapter<Pessoa>(this,
-                android.R.layout.simple_list_item_1, MainActivity.pessoas);
+                android.R.layout.simple_list_item_1, dbPessoa.listarTodos());
 
         spPessoa.setAdapter(adapterPessoa);
 
@@ -49,7 +51,8 @@ public class CadReserva extends AppCompatActivity {
 
                 Reserva reserva = new Reserva(pessoa,livro);
 
-                MainActivity.reservas.add(reserva);
+                ReservaHelper db = new ReservaHelper(CadReserva.this);
+                db.criarReserva(reserva);
 
                 Intent intent = new Intent(CadReserva.this ,MainActivity.class);
                 CadReserva.this.startActivity(intent);

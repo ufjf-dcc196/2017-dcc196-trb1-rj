@@ -1,5 +1,6 @@
 package br.com.oak.ifeira;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -11,12 +12,13 @@ import java.util.List;
  * Created by Teco on 30/11/2017.
  */
 
-public class ReservaHelper {
+public class ReservaHelper extends SQLiteHelper {
 
     private SQLiteDatabase db;
 
-    public ReservaHelper(SQLiteDatabase db) {
-        this.db = db;
+    public ReservaHelper(Context ctx) {
+        super(ctx);
+        this.db = super.getDb();
         criaTabela();
     }
 
@@ -41,17 +43,17 @@ public class ReservaHelper {
         };
     }
 
+    /*
     public List<Reserva> listarTodos() {
         Cursor resultado = db.rawQuery("SELECT titulo, nome FROM reserva", null);
         List<Reserva> reservas = new ArrayList<>();
         resultado.moveToPosition(-1);
         while (resultado.moveToNext()){
-            Reserva r = new Reserva();
-            r.setLivro(resultado.getString(0));
-            r.setPessoa(resultado.getString(1));
+            Reserva r = new Reserva(resultado.getString(0),resultado.getString(1));
             reservas.add(r);
         }
-        return livros;
+        return reservas;
     }
+    */
 
 }

@@ -14,14 +14,19 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static ArrayList<Pessoa> pessoas = new ArrayList<>();
-    public static ArrayList<Livro> livros = new ArrayList<>();
-    public static ArrayList<Reserva> reservas = new ArrayList<>();
+
+    private void getPessoas()
+    {
+        PessoaHelper db = new PessoaHelper(this);
+        pessoas = db.listarTodos();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getPessoas();
 
         //Button create and event bindings
         Button btnCadReserva = (Button) findViewById(R.id.btnCadReserva);

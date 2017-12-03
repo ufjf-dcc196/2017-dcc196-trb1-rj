@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/2017-dcc196-trb1-rj.iml" filepath="$PROJECT_DIR$/2017-dcc196-trb1-rj.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ifeira.iml" filepath="$PROJECT_DIR$/ifeira.iml" />
     </modules>
   </component>

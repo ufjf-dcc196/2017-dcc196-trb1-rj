@@ -32,18 +32,30 @@ public class CadLivro extends AppCompatActivity {
         btnCadastrarLivro.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Livro livro = new Livro();
+                try{
+                    Livro livro = new Livro();
 
-                livro.setTitulo(txtTitulo.getText().toString());
-                livro.setEditora(txtEditora.getText().toString());
-                livro.setAno(txtAno.getText().toString());
+                    livro.setTitulo(txtTitulo.getText().toString());
+                    livro.setEditora(txtEditora.getText().toString());
+                    livro.setAno(Integer.parseInt(txtAno.getText().toString()));
 
-                MainActivity.livros.add(livro);
+                    LivroHelper db = new LivroHelper(CadLivro.this);
+                    db.criarLivro(livro);
 
-                Toast.makeText(CadLivro.this, "O livro foi cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CadLivro.this, "O livro foi cadastrado com sucesso.", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(CadLivro.this,MainActivity.class);
-                CadLivro.this.startActivity(intent);
+                    Intent intent = new Intent(CadLivro.this,MainActivity.class);
+                    CadLivro.this.startActivity(intent);
+                }
+                catch(NumberFormatException erro)
+                {
+                    Toast.makeText(CadLivro.this, "O campo ano deve ser um número.", Toast.LENGTH_LONG).show();
+                }
+                catch (Exception erro)
+                {
+                    Toast.makeText(CadLivro.this, "Ocorreu um erro ao salvar o livro.", Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

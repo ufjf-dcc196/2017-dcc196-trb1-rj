@@ -30,20 +30,27 @@ public class CadPessoa extends AppCompatActivity {
         btnSalvarPessoa.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                try{
+                    //save pessoa
+                    Pessoa pessoa = new Pessoa();
 
-                //save pessoa
-                Pessoa pessoa = new Pessoa();
+                    pessoa.setEmail(txtEmail.getText().toString());
+                    pessoa.setNome(txtNome.getText().toString());
 
-                pessoa.setEmail(txtEmail.getText().toString());
-                pessoa.setNome(txtNome.getText().toString());
+                    PessoaHelper db = new PessoaHelper(CadPessoa.this);
+                    db.criarPessoa(pessoa);
 
-                MainActivity.pessoas.add(pessoa);
+                    //open main activity
+                    Intent intent = new Intent(CadPessoa.this,MainActivity.class);
+                    CadPessoa.this.startActivity(intent);
 
-                //open main activity
-                Intent intent = new Intent(CadPessoa.this,MainActivity.class);
-                CadPessoa.this.startActivity(intent);
+                    Toast.makeText(CadPessoa.this, "A pessoa foi cadastrada com sucesso.", Toast.LENGTH_SHORT).show();
+                }
+                catch(Exception erro)
+                {
+                    Toast.makeText(CadPessoa.this, "Ocorreu um erro ao salvar a pessoa.", Toast.LENGTH_LONG).show();
 
-                Toast.makeText(CadPessoa.this, "A pessoa foi cadastrada com sucesso.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
