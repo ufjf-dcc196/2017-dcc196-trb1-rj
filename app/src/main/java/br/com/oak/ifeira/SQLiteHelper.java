@@ -12,10 +12,11 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
     private Context ctx;
     private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "iFeira.db";
 
     public SQLiteHelper(Context ctx)
     {
-        this.ctx = ctx;
+        super(ctx,DATABASE_NAME,null, DATABASE_VERSION);
     }
 
     public SQLiteDatabase getDb()
@@ -25,16 +26,16 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        db.execSQL(iFeiraContract.Participante.SQL_CREATE_PARTICIPANTE);
-        db.execSQL(iFeiraContract.Livro.SQL_CREATE_LIVRO);
-        db.execSQL(iFeiraContract.Reserva.SQL_CREATE_RESERVA);
+        sqLiteDatabase.execSQL(iFeiraContract.Participante.SQL_CREATE_PARTICIPANTE);
+        sqLiteDatabase.execSQL(iFeiraContract.Livro.SQL_CREATE_LIVRO);
+        sqLiteDatabase.execSQL(iFeiraContract.Reserva.SQL_CREATE_RESERVA);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        db.execSQL(iFeiraContract.Participante.SQL_DROP_PARTICIPANTE);
-        db.execSQL(iFeiraContract.Livro.SQL_DROP_LIVRO);
-        db.execSQL(iFeiraContract.Reserva.SQL_DROP_RESERVA);
-        onCreate(db);
+        sqLiteDatabase.execSQL(iFeiraContract.Participante.SQL_DROP_PARTICIPANTE);
+        sqLiteDatabase.execSQL(iFeiraContract.Livro.SQL_DROP_LIVRO);
+        sqLiteDatabase.execSQL(iFeiraContract.Reserva.SQL_DROP_RESERVA);
+        onCreate(sqLiteDatabase);
     }
 }

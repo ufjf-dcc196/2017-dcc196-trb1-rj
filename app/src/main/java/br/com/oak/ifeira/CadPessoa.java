@@ -45,6 +45,7 @@ public class CadPessoa extends AppCompatActivity {
                     CadPessoa.this.startActivity(intent);
 
                     Toast.makeText(CadPessoa.this, "A pessoa foi cadastrada com sucesso.", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 catch(Exception erro)
                 {

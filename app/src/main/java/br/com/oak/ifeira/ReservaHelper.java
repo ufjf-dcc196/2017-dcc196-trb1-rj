@@ -42,8 +42,7 @@ public class ReservaHelper extends SQLiteHelper {
             Log.e("Reserva", e.getLocalizedMessage());
         };
     }
-
-    /*
+/*
     public List<Reserva> listarTodos() {
         Cursor resultado = db.rawQuery("SELECT titulo, nome FROM reserva", null);
         List<Reserva> reservas = new ArrayList<>();
