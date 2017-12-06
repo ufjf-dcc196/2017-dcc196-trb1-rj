@@ -17,6 +17,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
     public SQLiteHelper(Context ctx)
     {
         super(ctx,DATABASE_NAME,null, DATABASE_VERSION);
+        this.ctx = ctx;
     }
 
     public SQLiteDatabase getDb()
